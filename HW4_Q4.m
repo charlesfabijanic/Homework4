@@ -22,7 +22,7 @@ plot(t,y1,'--kd','LineWidth',2)
 hold off
 title('Implicit Euler, y_0=-1e-5')
 legend('Euler','Exact')
-saveas(gcf,'Error_Linearized_1.jpg')
+saveas(gcf,'Linearized_1.jpg')
 error1=abs(y-y1);
 figure(3)
 plot(t,error1,'LineWidth',2)
@@ -64,7 +64,7 @@ for i=2:6
     f=exp(y(i-1)-t(i-1));
     f1=exp(y(i-1)-t(i));
     df=exp(y(i-1)-t(i));
-    y(i)=y(i-1)+h/2*(f1+f)/(1-(h/2)*df);
+    y(i)=(y(i-1)+h*(f1+df))/(1-h*df);
 end
 figure(6)
 
@@ -92,7 +92,7 @@ for i=2:6
     f=exp(y(i-1)-t(i-1));
     f1=exp(y(i-1)-t(i));
     df=exp(y(i-1)-t(i));
-    y(i)=y(i-1)+h/2*(f1+f)/(1-(h/2)*df);
+    y(i)=(y(i-1)+h*(f1+df))/(1-h*df);
 end
 figure(8)
 
